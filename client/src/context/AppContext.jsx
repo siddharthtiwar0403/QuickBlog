@@ -16,13 +16,14 @@ export const AppProvider = ({ children }) => {
   const [input, setInput] = useState("");
 
   const fetchBlogs = async () => {
-    try {
-      await axios.get("/api/blog/all");
-      data.success ? setBlog(data.success) : toast.error(data.message);
-    } catch (error) {
-      toast.error(error.message);
-    }
-  };
+  try {
+    const { data } = await axios.get("/api/blog/all");
+    data.success ? setBlog(data.blogs) : toast.error(data.message);
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+
 
   useEffect(() => {
     fetchBlogs();
