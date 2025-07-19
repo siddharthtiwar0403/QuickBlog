@@ -16,6 +16,8 @@ app.use(express.json())
 app.get('/', (req,res) => res.send("API is working Properly"))
 app.use('/api/admin', adminRouter)
 app.use('/api/blog', blogRouter)
+app.get('/favicon.ico', (req, res) => res.status(204).end())
+
 
 const PORT = process.env.PORT || 3000;
 
