@@ -15,7 +15,8 @@ const Blog = () => {
   const { axios } = useAppContext()
 
   const [data, setData] = useState(null)
-  const [components, setComments] = useState([])
+  const [comments, setComments] = useState([])
+
   const [name, setName] = useState('')
   const [content, setContent] = useState('')
 
@@ -47,7 +48,7 @@ const Blog = () => {
 
   const addComment = async (e) =>{
     e.preventDefault()
-    
+
     try {
       const { data } = await axios.post('/api/blog/add-comment', {blog: id, name, content})
 
@@ -89,9 +90,9 @@ const Blog = () => {
         {/* comment section  */}
 
         <div className='mt-14 mb-10 max-w-3xl mx-auto'>
-            <p className='font-semibold'>Comments ({components.length})</p>
+            <p className='font-semibold'>Comments ({comments.length})</p>
             <div className='mt-3 flex flex-col gap-4'>
-              {components.map((item, index) =>(
+              {comments.map((item, index) =>(
                 <div key={index} className='relative bg-gray-200 border border-primary/5 max-w-xl p-4 rounded text-black'>
                   <div>
                     <img src={assets.user_icon} className='w-6' alt="" />
@@ -107,16 +108,32 @@ const Blog = () => {
         {/* Add Coment section */}
 
         <div className='max-w-3xl mx-auto'>
-              <p className='font-semibold mb-4'></p>
-              <form onSubmit={addComment} className='flex flex-col items-center gap-4 max-w-lg'>
-                <input onClick={(e) => setName(e.target.value)} value={name} type="text" placeholder='Name' required className='w-full p-2 border border-gray-300 rounded outline-none' />
+  <p className='font-semibold mb-4'>Add a Comment</p>
+  <form onSubmit={addComment} className='flex flex-col items-center gap-4 max-w-lg'>
+    <input
+      onChange={(e) => setName(e.target.value)}
+      value={name}
+      type='text'
+      placeholder='Name'
+      required
+      className='w-full p-2 border border-gray-300 rounded outline-none'
+    />
+    <textarea
+      onChange={(e) => setContent(e.target.value)}
+      value={content}
+      placeholder='Comment'
+      required
+      className='w-full h-40 p-2 border border-gray-300 rounded outline-none'
+    ></textarea>
+    <button
+      type='submit'
+      className='bg-primary text-white rounded p-2 px-8 hover:scale-105 transition-all cursor-pointer'
+    >
+      Submit
+    </button>
+  </form>
+</div>
 
-                <textarea onClick={(e) => setContent(e.target.value)} value={content} name="" placeholder='Comment' className='w-full h-40 p-2 border border-gray-300 rounded outline-none'></textarea>
-
-                <button type='submit' className='bg-primary text-white rounded p-2 px-8 hover:scale-102 transition-al cursor-pointer'>Submit</button>
-              </form>
-
-        </div>
 
         {/* Share Buttons */}
 

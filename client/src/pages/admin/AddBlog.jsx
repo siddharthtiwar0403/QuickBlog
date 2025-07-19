@@ -44,7 +44,6 @@ const AddBlog = () => {
     try {
        e.preventDefault()
        setIsAdding(true)
-
        const blog = {
         title, subTitle,
         description: quillRef.current.root.innerHTML,
