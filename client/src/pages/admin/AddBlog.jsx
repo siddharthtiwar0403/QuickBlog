@@ -63,10 +63,10 @@ const AddBlog = () => {
         quillRef.current.root.innerHTML = ''
         setCategory('Startup')
        }else{
-        toast.error('dont add')
+        toast.error(data.message)
        }
     } catch (error) {
-      toast.error('cant add')
+      toast.error(error.message)
     }finally{
       setIsAdding(false)
     }
