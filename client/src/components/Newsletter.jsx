@@ -10,7 +10,7 @@ const Newsletter = () => {
 
         <input className='border border-gray-300 rounded-md h-full border-r-0 outline-none w-full rounded-r-none px-3 text-gray-500' type="text" placeholder='Enter zYour Email' required />
 
-        <button className='md:px-12 px-8 h-full text-white bg-primary/80 hover:bg-primary transition-all cursor-pointer rounded-md rounded-l-none'>Subscribe</button>
+        <button className='md:px-12 px-8 h-full text-white bg-primary hover:bg-blue-700 transition-all cursor-pointer rounded-md rounded-l-none'>Subscribe</button>
 
       </form>
     </div>
